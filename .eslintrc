@@ -4,7 +4,7 @@
     ],
     "parserOptions": {
         "ecmaFeatures": {
-          "jsx": true,
+          "jsx": true
         },
         "ecmaVersion": "latest",
         "sourceType": "module"
