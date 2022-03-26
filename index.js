@@ -26,9 +26,9 @@ app.post('/login', (req, res) => {
       user.username === req.body.username &&
       user.password === req.body.password
     ) {
-      res.status(200).send('Success');
+      res.status(200).send({status: 'Success'});
     } else {
-      res.status(401).send('Invalid username or password');
+      res.status(401).send({status: 'Invalid username or password'});
     }
   } catch {
     res.status(500).send();
