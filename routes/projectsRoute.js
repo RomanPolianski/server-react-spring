@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 import projectsInfo from '../projects.js';
 
-router.get((req, res) => {
+router.get('/', (req, res) => {
   try {
     if (req.query.value) {
       const filtedProjects = {

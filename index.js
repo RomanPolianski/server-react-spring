@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 const projects = require('./routes/projectsRoute.js');
-const login = require('./routes/loginRoute.js').default;
+const login = require('./routes/loginRoute.js');
 
 const PORT = process.env.PORT ?? 3001;
 const app = express();
