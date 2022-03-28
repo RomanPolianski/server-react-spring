@@ -10,8 +10,9 @@ app.use(cors({ origin: '*' }));
 app.get('/projects', (req, res) => {
   try {
     res.send(projectsInfo);
+    console.log(req.query);
   } catch {
-    res.status(500).send();
+    res.status(500).send(req.query);
   }
 });
 
