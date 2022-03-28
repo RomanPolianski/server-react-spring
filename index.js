@@ -10,10 +10,10 @@ app.use(cors({ origin: '*' }));
 app.get('/projects', (req, res) => {
   try {
     if (req.query.value) {
-      const filtedProjects = projectsInfo.projects.filter((project) => (
+      const filtedProjects = {projects: projectsInfo.projects.filter((project) => (
         project.title.toLowerCase().includes(req.query.value)
           || project.text.toLowerCase().includes(req.query.value)
-      ));
+      )),}
       res.send(filtedProjects);
     } else {
       res.send(projectsInfo);
