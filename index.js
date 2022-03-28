@@ -9,7 +9,7 @@ app.use(cors({ origin: '*' }));
 
 app.get('/projects', (req, res) => {
   try {
-    res.send(projectsInfo).send(req.query);
+    res.send(req.query);
     console.log(req.query);
   } catch {
     res.status(500).send(req.query);
