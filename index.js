@@ -9,8 +9,15 @@ app.use(cors({ origin: '*' }));
 
 app.get('/projects', (req, res) => {
   try {
-    res.send(req.query);
-    console.log(req.query);
+    if (req.query.value) {
+      const filtedProjects = projectsInfo.projects.filter((project) => (
+        project.title.toLowerCase().includes(req.query.value)
+          || project.text.toLowerCase().includes(req.query.value)
+      ));
+      res.send(filtedProjects);
+    } else {
+      res.send(projectsInfo);
+    }
   } catch {
     res.status(500).send(req.query);
   }
