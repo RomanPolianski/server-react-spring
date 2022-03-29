@@ -4,12 +4,13 @@ import projectsInfo from '../projects.js';
 
 router.get('/', (req, res) => {
   try {
-    if (req.query.value) {
+    const textRequest = req.query.value;
+    if (textRequest) {
       const filtedProjects = {
         projects: projectsInfo.projects.filter(
           (project) =>
-            project.title.toLowerCase().includes(req.query.value) ||
-            project.text.toLowerCase().includes(req.query.value)
+            project.title.toLowerCase().includes(textRequest.toLowerCase()) ||
+            project.text.toLowerCase().includes(textRequest.toLowerCase())
         ),
       };
       res.send(filtedProjects);
