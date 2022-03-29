@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       res.send(projectsInfo);
     }
   } catch {
-    res.status(500);
+    res.status(500).send('Server error');
   }
 });
 
