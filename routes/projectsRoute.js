@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       res.send(projectsInfo);
     }
   } catch {
-    res.status(500).send(req.query);
+    res.status(500);
   }
 });
 

@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
       res.status(401).send({ status: 'Invalid username or password' });
     }
   } catch {
-    res.status(500).send();
+    res.status(500);
   }
 });
 
