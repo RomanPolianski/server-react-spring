@@ -1,25 +1,9 @@
-import express from 'express';
+const express = require('express');
+const projectsController = require('../controller/projects.controller');
 const router = express.Router();
-import projectsInfo from '../projects.js';
 
-router.get('/', (req, res) => {
-  try {
-    const textRequest = req.query.value;
-    if (textRequest) {
-      const filtedProjects = {
-        projects: projectsInfo.projects.filter(
-          (project) =>
-            project.title.toLowerCase().includes(textRequest.toLowerCase()) ||
-            project.text.toLowerCase().includes(textRequest.toLowerCase())
-        ),
-      };
-      res.send(filtedProjects);
-    } else {
-      res.send(projectsInfo);
-    }
-  } catch {
-    res.status(500).send('Server error');
-  }
-});
+router.get('/', projectsController.getProjects);
+router.get('/:id', projectsController.getSearchProjects);
 
-export default router;
+module.exports = router;
+

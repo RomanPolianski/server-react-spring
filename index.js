@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
-import express from 'express';
-import cors from 'cors';
-import projects from './routes/projectsRoute.js';
-import login from './routes/loginRoute.js';
+const express = require('express');
+const cors = require('cors');
+const projects = require('./routes/projectsRoute.js'); 
+const login = require('./routes/loginRoute.js'); 
 
 const PORT = process.env.PORT ?? 3001;
 const app = express();
