@@ -39,4 +39,4 @@ VALUES ('https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd2
 ('https://spring.io/images/projects/spring-framework-640ad1b04f7efa89e0f0f7353e6b5e02.svg?v=2', 'Spring Web Services', 'Facilitates the development of contract-first SOAP web services.');
 
 
-SELECT * FROM projects WHERE title LIKE '% Boot'; 
+SELECT * FROM projects WHERE title iLIKE '%flo'; 
