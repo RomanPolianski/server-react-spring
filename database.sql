@@ -40,3 +40,4 @@ VALUES ('https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd2
 
 
 SELECT * FROM projects WHERE title iLIKE '%flo'; 
+ALTER TABLE users ADD UNIQUE (userName);
