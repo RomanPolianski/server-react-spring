@@ -12,7 +12,6 @@ class UserController {
         'SELECT * FROM users WHERE username = $1',
         [userName]
       );
-      console.log(candidate.rows[0].password)
       if (candidate.rows.length) {
         return res.status(401).json({ message: 'User already registered' });
       }
@@ -31,13 +30,17 @@ class UserController {
     try {
       const { userName, password } = req.body;
 
-      const user = await db.query('SELECT * FROM users WHERE username = $1',
-      [userName]);
-      console.log(user.rows.length)
+      const user = await db.query('SELECT * FROM users WHERE username = $1', [
+        userName,
+      ]);
+      console.log(user.rows.length);
       if (!user.rows.length) {
         return res.status(400).json({ message: 'Invalid user name' });
       }
-      const validPassword = await bcrypt.compare(password, user.rows[0].password);
+      const validPassword = await bcrypt.compare(
+        password,
+        user.rows[0].password
+      );
       if (!validPassword) {
         return res.status(400).json({ message: 'Invalid password' });
       }
