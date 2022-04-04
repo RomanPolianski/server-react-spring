@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 const db = require('../db');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const generateTokens = require('../jwt-helper/jwt-helper');
 
 class UserController {
@@ -50,7 +51,49 @@ class UserController {
         httpOnly: true,
         secure: true,
       });
-      res.status(200).json(tokens);
+      res.status(200).json({accessToken: tokens.accessToken});
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  refreshToken(req, res) {
+    try {
+
+    const cookies = req.cookies;
+    let refreshToken = null;
+
+    if (!cookies?.refresh_token) {
+        console.log(cookies);
+      return res.status(401).json({ error: 'Null refresh token' });
+    } else {
+      refreshToken = cookies.refresh_token;
+    }
+
+      jwt.verify(
+        refreshToken,
+        process.env.JWT_REFRESH_SECRET,
+        (error, user) => {
+          if (error) {
+            return res.status(401).json({ error: error.message });
+          }
+          const tokens = generateTokens(user);
+          res.cookie('refresh_token', tokens.refreshToken, {
+            httpOnly: true,
+            secure: true,
+          });
+          res.status(200).json({accessToken: tokens.accessToken});
+        }
+      );
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+  deleteRefreshToken(req, res) {
+    try {
+      res.clearCookie('refresh_token');
+      return res.status(200).json({ message: 'refresh token deleted.' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
