@@ -5,7 +5,7 @@ const userController = require('./controller/user-controller');
 const checkToken = require('./middleware/checkToken');
 const registrationValidator = require('./middleware/registrationValidator');
 
-router.get('/projects' , checkToken ,projectsController.getProjects);
+router.get('/projects', projectsController.getProjects);
 router.get('/projects/:title', checkToken, projectsController.getSearchProjects);
 router.post('/login', userController.login);
 router.post(
