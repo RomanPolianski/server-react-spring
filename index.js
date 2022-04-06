@@ -8,7 +8,7 @@ const PORT = process.env.PORT ?? 5000;
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: '*' }));
+app.use(cors({ credentials: true, origin: 'https://romanpolianski.github.io/react-spring' }));
 
 app.use('/api', router);
 
