@@ -31,13 +31,9 @@ VALUES ('https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd2
 ('https://spring.io/images/projects/spring-edf462fec682b9d48cf628eaf9e19521.svg', 'Spring CredHub', 'Provides client-side support for storing, retrieving, and deleting credentials from a CredHub server running in a Cloud Foundry platform.'),
 ('https://spring.io/images/projects/spring-flo-9b976862b11e6dd682bcc4ae9f0eca1b.svg?v=2', 'Spring Flo', 'Provides a JavaScript library that offers a basic embeddable HTML5 visual builder for pipelines and simple graphs.'),
 ('https://spring.io/images/projects/spring-kafka-1f159a30a8723794dfa7260ffbdae5b0.svg?v=2', 'Spring for Apache Kafka', 'Provides Familiar Spring Abstractions for Apache Kafka.'),
-('https://spring.io/images/projects/spring-ldap-17f0bafd562c86e8cff223288e171484.svg?v=2', 'Spring LDAP', 'Simplifies the development of applications that use LDAP by using Spring''s familiar template-based approach.'),
+('https://spring.io/images/projects/spring-ldap-17f0bafd562c86e8cff223288e171484.svg?v=2', 'Spring LDAP', 'Simplifies the development of applications that use LDAP by using Springs familiar template-based approach.'),
 ('https://spring.io/images/projects/spring-shell-6e9620ae176781479de043aa55f85616.svg?v=2', 'Spring Shell', 'Makes writing and testing RESTful applications easier with CLI-based resource discovery and interaction.'),
 ('https://spring.io/images/projects/spring-statemachine-2e96d8735e365841096c5ad848af5983.svg', 'Spring Statemachine', 'Provides a framework for application developers to use state machine concepts with Spring applications.'),
 ('https://spring.io/images/projects/spring-edf462fec682b9d48cf628eaf9e19521.svg', 'Spring Vault', 'Provides familiar Spring abstractions for HashiCorp Vault.'),
 ('https://spring.io/images/projects/spring-web-flo-c47fc8750aa924ea5751f1cabf2d9cdb.svg?v=2', 'Spring Web Flow', 'Supports building web applications that feature controlled navigation, such as checking in for a flight or applying for a loan.'),
 ('https://spring.io/images/projects/spring-framework-640ad1b04f7efa89e0f0f7353e6b5e02.svg?v=2', 'Spring Web Services', 'Facilitates the development of contract-first SOAP web services.');
-
-
-SELECT * FROM projects WHERE title iLIKE '%flo'; 
-ALTER TABLE users ADD UNIQUE (userName);
