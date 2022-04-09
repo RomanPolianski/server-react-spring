@@ -5,7 +5,7 @@ const userController = require('./controller/user-controller');
 const checkToken = require('./middleware/checkToken');
 const registrationValidator = require('./middleware/registrationValidator');
 
-router.get('/projects', projectsController.getProjects);
+router.get('/projects', checkToken, projectsController.getProjects);
 router.get('/projects/:title', checkToken, projectsController.getSearchProjects);
 router.post('/login', userController.login);
 router.post(
@@ -13,7 +13,7 @@ router.post(
   registrationValidator,
   userController.registration
 );
-router.post('/refresh-token', userController.refreshToken);
+router.get('/refresh-token', userController.refreshToken);
 router.delete('/refresh-token', userController.deleteRefreshToken);
 
 module.exports = router;
