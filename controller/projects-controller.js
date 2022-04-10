@@ -1,8 +1,9 @@
 const db = require('../db');
+const Projects = db.projects;
 
 class ProjectsController {
   async getProjects(req, res) {
-    const projects = await db.query('SELECT * FROM projects');
+    const projects = await Projects.findAll();
     res.json(projects.rows);
   }
   async getSearchProjects(req, res) {

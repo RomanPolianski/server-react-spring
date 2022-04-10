@@ -1,13 +1,16 @@
-const Pool = require('pg').Pool;
+const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const isProduction = process.env.NODE_ENV === 'production';
+const sequelize = new Sequelize(process.env.PG_DATABASE, process.env.PG_USER, process.env.PG_PASSWORD , {
+    dialect: 'postgres',
+    host: process.env.DATABASE_URL
+})
 
-const connectionString = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
-const pool = new Pool({
-  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
-module.exports = pool;
+const Projects = require('./models/Projects')(sequelize);
+const Users = require('./models/Users')(sequelize);
+
+module.exports = {
+    sequelize: sequelize,
+    projects: Projects,
+    users: Users
+}
