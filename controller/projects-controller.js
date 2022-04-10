@@ -9,12 +9,9 @@ class ProjectsController {
   async getSearchProjects(req, res) {
     try {
       const title = req.params.title;
-      const titleMatch = `%${title}`;
-      const projects = await db.query(
-        'SELECT * FROM projects WHERE title iLIKE $1',
-        [titleMatch]
+      const projects = await Projects.findOne({ where: { title: title }}
       );
-      res.json(projects.rows);
+      res.json(projects);
     } catch (error) {
         res.json(error);
     }
