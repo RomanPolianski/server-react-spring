@@ -1,3 +1,4 @@
+const { Sequelize } = require('sequelize/types');
 const db = require('../db');
 const Projects = db.projects;
 
@@ -10,11 +11,14 @@ class ProjectsController {
     try {
       const title = req.params.title;
       const titleMatch = `%${title}`;
-      const projects = await db.query(
-        'SELECT * FROM projects WHERE title iLIKE $1',
-        [titleMatch]
-      );
-      res.json(projects.rows);
+      const projects = await Projects.findAll({
+        where: {
+          title: {
+            [Sequelize.Op.iLike] : titleMatch
+          }
+        }
+      })
+      res.json(projects);
     } catch (error) {
         res.json(error);
     }
