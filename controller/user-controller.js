@@ -33,7 +33,7 @@ class UserController {
     try {
       const { userName, password } = req.body;
 
-      const user = await Users.findOne({ where: { user_name: userName } });
+      const user = await Users.findOne({ where: { username: userName } });
       if (!user) {
         return res.status(400).json({ message: 'Invalid user name' });
       }
