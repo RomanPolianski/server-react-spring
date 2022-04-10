@@ -4,7 +4,7 @@ const Projects = db.projects;
 class ProjectsController {
   async getProjects(req, res) {
     const projects = await Projects.findAll();
-    res.json(projects.rows);
+    res.json(projects);
   }
   async getSearchProjects(req, res) {
     try {
