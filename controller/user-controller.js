@@ -4,7 +4,7 @@ const db = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const generateTokens = require('../jwt-helper/jwt-helper');
-const Users = require('../models/Users');
+const Users = db.users;
 
 class UserController {
   async registration(req, res, next) {
