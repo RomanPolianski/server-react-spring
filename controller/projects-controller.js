@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize/types');
+const { Op } = require("sequelize");
 const db = require('../db');
 const Projects = db.projects;
 
@@ -14,7 +14,7 @@ class ProjectsController {
       const projects = await Projects.findAll({
         where: {
           title: {
-            [Sequelize.Op.iLike] : titleMatch
+            [Op.iLike] : titleMatch
           }
         }
       })
